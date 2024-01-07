@@ -1,14 +1,7 @@
 import json
 import argparse
 import sys
-
-def parse_file(file):
-    lines = []
-    with open(file, 'r') as f:
-        data = f.read()
-        lines = data.split('\n')
-        f.close()
-    return lines
+from utils import *
 
 def make_feature(coords):
     feature_type = 'LineString'
@@ -40,7 +33,7 @@ def main():
     
     lines = []
     if input is not None:
-        lines = parse_file(input)
+        lines = parse_coord_file(input)
     else:
         for line in sys.stdin:
             lines.append(line)
